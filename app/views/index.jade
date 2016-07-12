@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  - var total = 0
+  input#titulo(type="search", placeholder="Título")
+  input#plataforma(type="search", placeholder="Plataforma")
+  input#lancamento(type="search", placeholder="Ano de Lançamento")
+  button#search Filtrar
+  table
+    th
+      td Título
+      td Plataforma
+      td Gênero
+      td Ano de Lançamento
+      td Valor
+      td Avaliação
+      td Comentário
+    each game in games
+      - total += game.valor
+      tr
+        td= game.titulo
+        td= game.plataforma
+        td= game.genero
+        td= game.lancamento
+        td= game.valor
+        td= game.avaliacao
+        td= game.comentario
+  p= total
+  br
+  button#add Adicionar
