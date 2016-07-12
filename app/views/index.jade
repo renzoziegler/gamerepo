@@ -1,21 +1,29 @@
 extends layout
 
 block content
-  h1= title
+  h2= title
+    br
+    small Powered by Renzo Ziegler
   - var total = 0
-  input#titulo(type="search", placeholder="Título")
-  input#plataforma(type="search", placeholder="Plataforma")
-  input#lancamento(type="search", placeholder="Ano de Lançamento")
-  button#search Filtrar
-  table
-    th
-      td Título
-      td Plataforma
-      td Gênero
-      td Ano de Lançamento
-      td Valor
-      td Avaliação
-      td Comentário
+  br
+  form.form-inline
+    div.form-group
+      input#titulo(class="form-control", type="search", placeholder="Título")
+    div.form-group
+      input#plataforma(class="form-control", type="search", placeholder="Plataforma")
+    div.form-group
+      input#lancamento(class="form-control", type="search", placeholder="Ano de Lançamento")
+    button#search(class="btn btn-default") Filtrar
+  br
+  table(class='table table-striped table-bordered')
+    tr
+      th Título
+      th Plataforma
+      th Gênero
+      th Ano de Lançamento
+      th Valor
+      th Avaliação
+      th Comentário
     each game in games
       - total += game.valor
       tr
@@ -26,6 +34,14 @@ block content
         td= game.valor
         td= game.avaliacao
         td= game.comentario
-  p= total
+    tr
+      td
+      td
+      td
+      td
+        b Total
+      td= total
+      td
+      td
   br
-  button#add Adicionar
+  button#add(class="btn btn-default") Adicionar
